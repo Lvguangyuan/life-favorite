@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HelloWorldController {
 
 
+    /**
+     * This method will return index page to user.
+     * @param no arguments
+     * @return index page
+     */
     @RequestMapping("/hello")
     public String hello() {
         return "index";

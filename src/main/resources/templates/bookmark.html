@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>工具箱</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+
+
+<ul class="nav nav-tabs">
+    <li data-page-type="home-page" role="presentation"><a href="/">首页</a></li>
+    <li data-page-type="tool-page" role="presentation" class="active"><a href="bookmark">工具箱</a></li>
+    <li data-page-type="board-page" role="presentation"><a href="board">留言板</a></li>
+</ul>
+
+
+<div class="container">
+    <div class="row">
+        <h1>工具箱</h1>
+        <button type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            添加工具
+        </button>
+    </div>
+
+    <form action="bin/add-bookmark" th:object="${searchCriteria}" method="post" class="inline">
+        <div class="form-group">
+            <input name="title" type="text" class="form-control" placeholder="标题">
+            <input name="link" type="text" class="form-control" placeholder="网址">
+            <input name="description" type="text" class="form-control" placeholder="简介">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+    <ul class="">
+        <li th:each="bookmark : ${bookmarks}">
+            <a th:text="${bookmark.title}" th:href="${bookmark.link}"></a>
+            <p th:text="${bookmark.description}"></p>
+        </li>
+    </ul>
+
+</div>
+
+
+<script src="/js/jquery.3.3.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>

@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import top.grandma.lifefavorite.dao.Bookmark;
+import top.grandma.lifefavorite.domain.Bookmark;
+import top.grandma.lifefavorite.repository.BookmarkRepository;
 import top.grandma.lifefavorite.service.BookmarkService;
 
 import java.util.List;
@@ -16,8 +17,7 @@ public class PageController {
 
     private static final Logger log = LoggerFactory.getLogger(PageController.class);
 
-    @Autowired
-    BookmarkService bookmarkService;
+    @Autowired BookmarkService bookmarkService;
 
     @RequestMapping("/")
     public String toHome() {
@@ -26,8 +26,7 @@ public class PageController {
 
     @RequestMapping("/bookmark")
     public String toTool(Model model) {
-        List<Bookmark> bookmarks = bookmarkService.findAll();
-        model.addAttribute("bookmarks", bookmarks);
+        model.addAttribute("bookmarks", bookmarkService.findAll());
         return "bookmark";
     }
 

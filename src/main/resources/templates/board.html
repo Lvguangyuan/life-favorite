@@ -1,56 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>留言板</title>
+<div th:replace="modules :: head ('留言板')"></div>
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-</head>
 <body>
 
+<div th:replace="modules :: navigation"></div>
 
-<ul class="nav nav-tabs">
-    <li data-page-type="home-page" role="presentation"><a href="/">首页</a></li>
-    <li data-page-type="tool-page" role="presentation"><a href="bookmark">工具箱</a></li>
-    <li data-page-type="board-page" role="presentation" class="active"><a href="board">留言板</a></li>
-</ul>
+<div th:replace="modules :: header"></div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-        <div class="col-md-1">.col-md-1</div>
-    </div>
-    <div class="row">
-        <div class="col-md-8">.col-md-8</div>
-        <div class="col-md-4">.col-md-4</div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">.col-md-4</div>
-        <div class="col-md-4">.col-md-4</div>
-        <div class="col-md-4">.col-md-4</div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">.col-md-6</div>
-        <div class="col-md-6">.col-md-6</div>
-    </div>
+    <h1>留言板</h1>
 </div>
 
 
-<script src="/js/jquery.3.3.1.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<div th:insert="modules :: footer"></div>
+
+<div th:replace="modules :: js"></div>
 
 </body>
 </html>

@@ -20,8 +20,8 @@ public class PageController {
     @Autowired BookmarkService bookmarkService;
 
     @RequestMapping("/")
-    public String toHome() {
-        return "index";
+    public String toIndex() {
+        return "redirect:/home";
     }
 
     @RequestMapping("/bookmark")
@@ -33,6 +33,11 @@ public class PageController {
     @RequestMapping("/board")
     public String toBoard() {
         return "board";
+    }
+
+    @RequestMapping("/home")
+    public String toHome() {
+        return "index";
     }
 
 

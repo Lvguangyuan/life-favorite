@@ -1,14 +1,19 @@
-
 ;(function () {
     'use strict';
 
-    // navigate();
+    navigate();
 
     function navigate() {
-        let pageType = $('.nav.nav-tabs').find('.active').data('page-type');
-        if ('home-page' === pageType) {
-            $('.home-page').removeClass('hide');
+        let url = window.location.href;
+        if (url.indexOf('home') !== -1) {
+            $('.nav.nav-tabs').find('li[data-page-type="home"]').addClass('active');
+        } else if (url.indexOf('bookmark') !== -1) {
+            $('.nav.nav-tabs').find('li[data-page-type="bookmark"]').addClass('active');
+        } else if (url.indexOf('board') !==  -1) {
+            $('.nav.nav-tabs').find('li[data-page-type="board"]').addClass('active');
         }
+
     }
+
 
 }());

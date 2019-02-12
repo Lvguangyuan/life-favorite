@@ -1,31 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Know Nothing</title>
+<div th:replace="modules :: head ('Know Nothing')"></div>
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-</head>
 <body>
 
-<!-- Spring Boot Thymeleaf -->
+<div th:replace="modules :: navigation"></div>
 
-<ul class="nav nav-tabs">
-    <li data-page-type="home-page" role="presentation" class="active"><a href="/">首页</a></li>
-    <li data-page-type="tool-page" role="presentation"><a href="bookmark">工具箱</a></li>
-    <li data-page-type="board-page" role="presentation"><a href="board">留言板</a></li>
-</ul>
+<div th:replace="modules :: header"></div>
 
 <div class="container">
     <h1>Know Nothing</h1>
 </div>
 
 
-<script src="/js/jquery.3.3.1.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/main.js"></script>
+<div th:insert="modules :: footer"></div>
+
+<div th:replace="modules :: js"></div>
 
 </body>
 </html>

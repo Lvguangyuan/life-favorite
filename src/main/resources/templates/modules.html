@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="head (title)">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title th:text="${title}"></title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+    </head>
+</div>
+
+<div th:fragment="navigation">
+    <ul class="nav nav-tabs">
+        <li data-page-type="home" role="presentation"><a href="home">首页</a></li>
+        <li data-page-type="bookmark" role="presentation"><a href="bookmark">工具箱</a></li>
+        <li data-page-type="board" role="presentation"><a href="board">留言板</a></li>
+    </ul>
+</div>
+
+<div th:fragment="header">
+    <h3>This is header....</h3>
+</div>
+
+<div th:fragment="footer">
+    <h3>This is footer....</h3>
+</div>
+
+<div th:fragment="js" th:remove="tag">
+    <script src="/js/jquery.3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+</div>
+
+
+</body>
+</html>

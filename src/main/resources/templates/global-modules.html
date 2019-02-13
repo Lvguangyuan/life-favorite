@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
-<body>
 
-<div th:fragment="head (title)">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title th:text="${title}"></title>
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
-    </head>
-</div>
+<head th:fragment="head (title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
 
 <div th:fragment="navigation">
     <ul class="nav nav-tabs">
         <li data-page-type="home" role="presentation"><a href="home">首页</a></li>
-        <li data-page-type="bookmark" role="presentation"><a href="bookmark">工具箱</a></li>
+        <li data-page-type="bookmark" role="presentation"><a href="bookmark">书签夹</a></li>
         <li data-page-type="board" role="presentation"><a href="board">留言板</a></li>
     </ul>
 </div>

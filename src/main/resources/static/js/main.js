@@ -12,7 +12,6 @@
         } else if (url.indexOf('board') !==  -1) {
             $('.nav.nav-tabs').find('li[data-page-type="board"]').addClass('active');
         }
-
     }
 
 

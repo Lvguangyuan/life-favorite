@@ -1,0 +1,33 @@
+
+.lfa-container {
+    margin-left: 20px;
+}
+
+.bk-grid {
+    margin-top: 15px;
+}
+
+.sidebar {
+    background-color: #f5f4f4;
+}
+
+.content {
+    font-size: 2rem;
+}
+
+.content p {
+    font-size: 1.5rem;
+}
+
+.trigger-btn {
+    margin-left: 15px;
+}
+
+.lfa-form {
+    display: none;
+    margin-top: 10px;
+}
+
+.lfa-list {
+    /*margin-top: 20px;*/
+}

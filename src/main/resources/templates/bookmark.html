@@ -5,8 +5,6 @@
 
 <body>
 
-<div th:replace="global-modules :: navigation"></div>
-
 <div class="container-fluid lfa-container">
 
     <div class="row">
@@ -17,7 +15,7 @@
         </button>
     </div>
 
-    <form id="bk-form" class="lfa-form row" action="bin/add-bookmark" method="post">
+    <form id="bk-form" class="lfa-form row" action="bin/bookmark/save" method="post">
         <div class="col-md-2">
             <input required type="text" name="title" class="form-control full-width" placeholder="标题">
         </div>
@@ -30,6 +28,7 @@
         <div class="col-md-2">
             <select name="type" class="form-control" required>
                 <option value>选择书签类型</option>
+                <option value="frequent">常用</option>
                 <option value="todo">待处理</option>
                 <option value="interest">有趣</option>
                 <option value="develop">开发工具</option>
@@ -40,37 +39,35 @@
 
 
     <div class="row bk-grid">
-
         <!-- Nav tabs -->
         <ul class="sidebar nav nav-stacked nav-pills col-md-2">
             <li class="active"><a href="#frequent" aria-controls="frequent" data-toggle="tab">常用</a></li>
             <li ><a href="#todo" aria-controls="todo" data-toggle="tab">待处理</a></li>
             <li ><a href="#interest" aria-controls="interest" data-toggle="tab">有趣</a></li>
             <li ><a href="#develop" aria-controls="develop" data-toggle="tab">开发工具</a></li>
+            <li ><a href="#all" aria-controls="all" data-toggle="tab">全部</a></li>
         </ul>
-
         <!-- Tab panes -->
         <div class="content tab-content col-md-10">
             <div  class="tab-pane active" id="frequent">
-                <ul class="lfa-list list-unstyled list-inline">
-                    <li class="col-md-2" th:each="bookmark : ${bookmarks}">
-                        <a target="_blank" th:text="${bookmark.title}" th:href="${bookmark.link}"></a>
-                        <!--<button class="glyphicon glyphicon-remove btn btn-default btn-sm"></button>-->
-                        <p th:text="${bookmark.description}"></p>
-                    </li>
-                </ul>
+                <div th:replace="bk-modules :: bookmarkList (${frequent})"></div>
             </div>
-            <div  class="tab-pane" id="todo">2...</div>
-            <div  class="tab-pane" id="interest">有趣.....</div>
-            <div  class="tab-pane" id="develop">开发工具</div>
+            <div  class="tab-pane" id="todo">
+                <div th:replace="bk-modules :: bookmarkList (${todo})"></div>
+            </div>
+            <div  class="tab-pane" id="interest">
+                <div th:replace="bk-modules :: bookmarkList (${interest})"></div>
+            </div>
+            <div  class="tab-pane" id="develop">
+                <div th:replace="bk-modules :: bookmarkList (${develop})"></div>
+            </div>
+            <div  class="tab-pane" id="all">
+                <div th:replace="bk-modules :: bookmarkList (${bookmarks})"></div>
+            </div>
         </div>
-
     </div>
 
 </div>
-
-
-
 
 <div th:replace="global-modules :: js"></div>
 <script src="/js/bookmark.js"></script>

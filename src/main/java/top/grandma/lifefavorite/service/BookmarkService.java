@@ -8,10 +8,15 @@ import top.grandma.lifefavorite.repository.BookmarkRepository;
 @Service
 public class BookmarkService {
 
-    @Autowired BookmarkRepository bookmarkRepository;
+    @Autowired
+    private BookmarkRepository bookmarkRepository;
 
     public Iterable<Bookmark> findAll() {
         return bookmarkRepository.findAll();
+    }
+
+    public Iterable<Bookmark> findAllByType(String type) {
+        return bookmarkRepository.findALLByType(type);
     }
 
     public void save(Bookmark bookmark) {

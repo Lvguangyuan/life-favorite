@@ -23,4 +23,8 @@ public class BookmarkService {
         bookmarkRepository.save(bookmark);
     }
 
+    public void deleteById(int id) {
+        bookmarkRepository.deleteById(id);
+    }
+
 }

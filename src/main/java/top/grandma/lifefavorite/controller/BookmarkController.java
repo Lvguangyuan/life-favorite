@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public class BookmarkController {
 
     @Autowired
-    private HttpServletRequest req;
+    private HttpServletRequest request;
 
     @Autowired
     private BookmarkService bookmarkService;
@@ -22,12 +22,17 @@ public class BookmarkController {
     @RequestMapping(method = RequestMethod.POST, value = "save")
     public String save() {
         Bookmark bookmark = new Bookmark();
-        bookmark.setTitle(req.getParameter("title"));
-        bookmark.setLink(req.getParameter("link"));
-        bookmark.setType(req.getParameter("type"));
-        bookmark.setDescription(req.getParameter("description"));
+        bookmark.setTitle(request.getParameter("title"));
+        bookmark.setLink(request.getParameter("link"));
+        bookmark.setType(request.getParameter("type"));
+        bookmark.setDescription(request.getParameter("description"));
         bookmarkService.save(bookmark);
         return "redirect:/bookmark";
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "delete")
+    public String delete() {
+        bookmarkService.deleteById(Integer.valueOf(request.getParameter("id")));
+        return "redirect:/bookmark";
+    }
 }

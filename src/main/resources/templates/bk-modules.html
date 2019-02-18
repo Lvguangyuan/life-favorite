@@ -5,8 +5,8 @@
 
 <div th:fragment="bookmarkList (bookmarks)">
     <ul class="lfa-list list-unstyled list-inline">
-        <li class="col-md-2" th:each="bookmark : ${bookmarks}">
-            <a target="_blank" th:text="${bookmark.title}" th:href="${bookmark.link}"></a>
+        <li class="bk-item col-md-2" th:each="bookmark : ${bookmarks}">
+            <a target="_blank" class="" th:data-id="${bookmark.id}" th:text="${bookmark.title}" th:href="${bookmark.link}"></a>
             <!--<button class="glyphicon glyphicon-remove btn btn-default btn-sm"></button>-->
             <p th:text="${bookmark.description}"></p>
         </li>

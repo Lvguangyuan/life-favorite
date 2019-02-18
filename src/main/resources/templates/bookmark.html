@@ -17,6 +17,8 @@
         </button>
     </div>
 
+    <div style="display: none" class="recycle-bin">删除书签</div>
+
     <form id="bk-form" class="lfa-form row" action="bin/bookmark/save" method="post">
         <div class="col-md-2">
             <input required type="text" name="title" class="form-control full-width" placeholder="标题">
@@ -48,6 +50,7 @@
             <li ><a href="#interest" aria-controls="interest" data-toggle="tab">有趣</a></li>
             <li ><a href="#develop" aria-controls="develop" data-toggle="tab">开发工具</a></li>
             <li ><a href="#all" aria-controls="all" data-toggle="tab">全部</a></li>
+            <li ><a href="#delete" aria-controls="delete" data-toggle="tab">最近删除</a></li>
         </ul>
         <!-- Tab panes -->
         <div class="content tab-content col-md-10">
@@ -64,6 +67,9 @@
                 <div th:replace="bk-modules :: bookmarkList (${develop})"></div>
             </div>
             <div  class="tab-pane" id="all">
+                <div th:replace="bk-modules :: bookmarkList (${bookmarks})"></div>
+            </div>
+            <div  class="tab-pane" id="delete">
                 <div th:replace="bk-modules :: bookmarkList (${bookmarks})"></div>
             </div>
         </div>

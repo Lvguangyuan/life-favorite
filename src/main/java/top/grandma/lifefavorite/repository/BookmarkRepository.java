@@ -21,4 +21,5 @@ public interface BookmarkRepository extends CrudRepository<Bookmark, Integer> {
     @Query("select b from Bookmark b where b.type = ?1")
     Iterable<Bookmark> findALLByType(String type);
 
+//    void deleteById90
 }

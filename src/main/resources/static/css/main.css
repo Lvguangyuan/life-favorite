@@ -1,4 +1,20 @@
 
+.drag-enter {
+    background-color: #f9d1d1;
+}
+
+.drag-start {
+    background-color: #f5f4f4;
+}
+
+.recycle-bin {
+    height: 80px;
+    width: 1000px;
+    margin: auto;
+    text-align: center;
+    font-size: xx-large;
+}
+
 .lfa-container {
     margin-left: 20px;
 }
@@ -9,6 +25,7 @@
 
 .sidebar {
     background-color: #f5f4f4;
+    padding-right: 0;
 }
 
 .content {
@@ -26,6 +43,11 @@
 .lfa-form {
     display: none;
     margin-top: 10px;
+}
+
+.bk-item {
+    width: 173px;
+    height: 101px;
 }
 
 .lfa-list {

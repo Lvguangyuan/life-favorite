@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import top.grandma.lifefavorite.model.BookmarkType;
+import top.grandma.lifefavorite.domain.Bookmark;
 import top.grandma.lifefavorite.service.BookmarkService;
+
+import java.util.Map;
 
 /**
  * @Controller 返回页面, @RestController返回 json 数据
@@ -28,16 +30,14 @@ public class PageController {
 
     @RequestMapping("/bookmark")
     public String toTool(Model model) {
-        model.addAttribute(BookmarkType.FREQUENT.getType(), bookmarkService.findAllByType(BookmarkType.FREQUENT.getType()));
-        model.addAttribute(BookmarkType.TODO.getType(), bookmarkService.findAllByType(BookmarkType.TODO.getType()));
-        model.addAttribute(BookmarkType.INTEREST.getType(), bookmarkService.findAllByType(BookmarkType.INTEREST.getType()));
-        model.addAttribute(BookmarkType.DEVELOP.getType(), bookmarkService.findAllByType(BookmarkType.DEVELOP.getType()));
-        model.addAttribute("bookmarks", bookmarkService.findAll());
+        Map<String, Iterable<Bookmark>> bookmarkMap = bookmarkService.groupAllByType();
+//        bookmarkMap.put("all", bookmarkService.findAll());
+        model.addAttribute("bookmarkMap", bookmarkMap);
         return "bookmark";
     }
 
     @RequestMapping("/board")
-    public String toBoard() {
+    public String toBoard(Model model) {
         return "board";
     }
 

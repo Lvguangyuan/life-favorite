@@ -22,4 +22,5 @@ public interface BookmarkRepository extends CrudRepository<Bookmark, Integer> {
     Iterable<Bookmark> findALLByType(String type);
 
 //    void deleteById90
+//    Iterable<Bookmark>
 }

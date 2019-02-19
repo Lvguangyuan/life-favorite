@@ -13,13 +13,39 @@
         $obj.show(100);
 
         let $current = $(e.target);
-        let bookmarkItemId = $current.data("id");
-        $current.addClass("" + bookmarkItemId);
-        let ancestorId = $current.parent().parent().parent().parent().attr("id");
+        let bookmarkId = $current.data("id");
+        let bookmarkType = $current.parent().parent().parent().attr("id");
 
         let dataTransfer = e.originalEvent.dataTransfer;
-        dataTransfer.setData("id", bookmarkItemId);
-        dataTransfer.setData("ancestorId", ancestorId);
+        dataTransfer.setData("bookmarkId", bookmarkId);
+        dataTransfer.setData("bookmarkType", bookmarkType);
+    });
+
+    $(".recycle-bin").on("drop", function (e) {
+        e.preventDefault();
+
+        let dataTransfer = e.originalEvent.dataTransfer;
+        let bookmarkId = dataTransfer.getData("bookmarkId");
+        let bookmarkType = dataTransfer.getData("bookmarkType");
+
+        let $bookmark = $("#" + bookmarkType).find("[data-id='"+ bookmarkId +"']");
+        let title = $bookmark.text();
+        let link = $bookmark.attr("href");
+        let description = $bookmark.next().text();
+
+        $bookmark.parent().remove();
+        $("." + RECYCLE_BIN_CLASS).hide();
+
+        $.ajax({
+            url: "bin/bookmark/delete",
+            data: {
+                "id": bookmarkId,
+                "type": bookmarkType,
+                "title": title,
+                "link": link,
+                "description": description
+            }
+        });
     });
 
     $(".content").on("dragend", function () {
@@ -40,23 +66,6 @@
         removeStyleClasses();
         $(this).addClass("drag-start");
     });
-
-    $(".recycle-bin").on("drop", function (e) {
-        e.preventDefault();
-
-        let dataTransfer = e.originalEvent.dataTransfer;
-        let bookmarkItemId = dataTransfer.getData("id");
-        let ancestorId = dataTransfer.getData("ancestorId");
-
-        $("#" + ancestorId).find("." + bookmarkItemId).parent().remove();
-        $("." + RECYCLE_BIN_CLASS).hide();
-
-        $.ajax({
-            url: "bin/bookmark/delete",
-            data: {"id": bookmarkItemId}
-        });
-    });
-
 
     function removeStyleClasses() {
         let $obj = $("." + RECYCLE_BIN_CLASS);

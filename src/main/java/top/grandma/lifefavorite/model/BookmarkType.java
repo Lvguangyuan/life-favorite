@@ -5,7 +5,8 @@ public enum BookmarkType {
     FREQUENT ("frequent"),
     TODO ("todo"),
     INTEREST ("interest"),
-    DEVELOP ("develop");
+    DEVELOP ("develop"),
+    DELETED ("deleted");
 
     private final String type;
 

@@ -26,6 +26,8 @@
 .sidebar {
     background-color: #f5f4f4;
     padding-right: 0;
+    text-transform: capitalize;
+    font-size: 1.1em;
 }
 
 .content {

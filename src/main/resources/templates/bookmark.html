@@ -41,44 +41,34 @@
         <button type="submit" class="btn btn-default">添加</button>
     </form>
 
-
     <div class="row bk-grid">
         <!-- Nav tabs -->
         <ul class="sidebar nav nav-stacked nav-pills col-md-2">
-            <li class="active"><a href="#frequent" aria-controls="frequent" data-toggle="tab">常用</a></li>
-            <li ><a href="#todo" aria-controls="todo" data-toggle="tab">待处理</a></li>
-            <li ><a href="#interest" aria-controls="interest" data-toggle="tab">有趣</a></li>
-            <li ><a href="#develop" aria-controls="develop" data-toggle="tab">开发工具</a></li>
-            <li ><a href="#all" aria-controls="all" data-toggle="tab">全部</a></li>
-            <li ><a href="#delete" aria-controls="delete" data-toggle="tab">最近删除</a></li>
+            <li th:each="bookmarks, iterStatus : ${bookmarkMap}" th:class="${iterStatus.first} ? 'active'">
+                <a th:href="${'#' + bookmarks.key}" th:aria-controls="${bookmarks.key}" th:text="${bookmarks.key}" data-toggle="tab">常用</a>
+            </li>
         </ul>
         <!-- Tab panes -->
         <div class="content tab-content col-md-10">
-            <div  class="tab-pane active" id="frequent">
-                <div th:replace="bk-modules :: bookmarkList (${frequent})"></div>
-            </div>
-            <div  class="tab-pane" id="todo">
-                <div th:replace="bk-modules :: bookmarkList (${todo})"></div>
-            </div>
-            <div  class="tab-pane" id="interest">
-                <div th:replace="bk-modules :: bookmarkList (${interest})"></div>
-            </div>
-            <div  class="tab-pane" id="develop">
-                <div th:replace="bk-modules :: bookmarkList (${develop})"></div>
-            </div>
-            <div  class="tab-pane" id="all">
-                <div th:replace="bk-modules :: bookmarkList (${bookmarks})"></div>
-            </div>
-            <div  class="tab-pane" id="delete">
-                <div th:replace="bk-modules :: bookmarkList (${bookmarks})"></div>
+            <div th:each="bookmarks, iterStatus : ${bookmarkMap}" th:class="${iterStatus.first} ? 'active tab-pane' : 'tab-pane'" th:id="${bookmarks.key}">
+                <ul class="lfa-list list-unstyled list-inline">
+                    <li class="bk-item col-md-2" th:each="bookmark : ${bookmarks.value}">
+                        <a target="_blank" class="" th:data-id="${bookmark.id}" th:text="${bookmark.title}" th:href="${bookmark.link}"></a>
+                        <!--<button class="glyphicon glyphicon-remove btn btn-default btn-sm"></button>-->
+                        <p th:text="${bookmark.description}"></p>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 
+
+
+
 </div>
 
 <div th:replace="global-modules :: js"></div>
-<script src="/js/bookmark.js"></script>
+<script type="text/javascript" src="/js/bookmark.js"></script>
 
 </body>
 </html>

@@ -2,6 +2,7 @@ package top.grandma.lifefavorite.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import top.grandma.lifefavorite.domain.Bookmark;
 import top.grandma.lifefavorite.model.BookmarkType;
 import top.grandma.lifefavorite.repository.BookmarkRepository;
@@ -40,5 +41,9 @@ public class BookmarkService {
         return map;
     }
 
+    @Transactional
+    public void updateType(String newType, int id) {
+        bookmarkRepository.updateType(newType, id);
+    }
 
 }

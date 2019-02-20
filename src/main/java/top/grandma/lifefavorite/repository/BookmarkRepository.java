@@ -1,5 +1,6 @@
 package top.grandma.lifefavorite.repository;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import top.grandma.lifefavorite.domain.Bookmark;
@@ -21,6 +22,7 @@ public interface BookmarkRepository extends CrudRepository<Bookmark, Integer> {
     @Query("select b from Bookmark b where b.type = ?1")
     Iterable<Bookmark> findALLByType(String type);
 
-//    void deleteById90
-//    Iterable<Bookmark>
+    @Modifying
+    @Query("update Bookmark b set b.type = ?1 where b.id = ?2")
+    void updateType(String newType, int id);
 }

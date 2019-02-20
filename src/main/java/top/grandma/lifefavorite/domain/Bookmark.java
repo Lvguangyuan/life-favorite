@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity // This tells Hibernate to make a table out of this class.
-@DynamicUpdate // dynamic update specified fields.
 @NoArgsConstructor
 @Getter
 @Setter

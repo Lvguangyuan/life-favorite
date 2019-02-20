@@ -33,6 +33,9 @@ public class PageController {
         Map<String, Iterable<Bookmark>> bookmarkMap = bookmarkService.groupAllByType();
 //        bookmarkMap.put("all", bookmarkService.findAll());
         model.addAttribute("bookmarkMap", bookmarkMap);
+        log.error("error error error error error ");
+        log.debug("debug debug debug debug debug debug ");
+        log.info("info info info info info info ");
         return "bookmark";
     }
 
